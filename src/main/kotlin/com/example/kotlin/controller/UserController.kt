@@ -12,7 +12,7 @@ class UserController {
     lateinit var userService: UserService
 
     @GetMapping("/")
-    fun index(): List<User> {
+    fun index(): MutableIterable<User> {
         return userService.findAll()
     }
 

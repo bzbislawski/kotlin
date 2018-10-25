@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    depends_on:
+    - mysql
+    ports:
+    - "8080:8080"
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: kotlin
+    ports:
+    - "3307:3306"
