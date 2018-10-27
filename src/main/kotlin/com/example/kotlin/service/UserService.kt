@@ -1,6 +1,6 @@
 package com.example.kotlin.service
 
-import com.example.kotlin.UserRepository
+import com.example.kotlin.repository.UserRepository
 import com.example.kotlin.model.User
 import org.springframework.stereotype.Service
 
