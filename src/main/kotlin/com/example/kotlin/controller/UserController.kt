@@ -11,18 +11,16 @@ class UserController {
     @Autowired
     lateinit var userService: UserService
 
-    @GetMapping("/")
+    @GetMapping("/users")
     fun index(): MutableIterable<User> {
         return userService.findAll()
     }
 
-    @GetMapping("/{id}")
-    fun find(@PathVariable id: Int) : User? {
-        return userService.find(id)
-    }
+    @GetMapping("/users/{id}")
+    fun find(@PathVariable id: Int) =  userService.find(id)
 
-    @PostMapping("/submit")
-    fun submit(@RequestBody user: User): Boolean {
+    @PostMapping("/users")
+    fun submit(@RequestBody user: User): User? {
         return userService.add(user)
     }
 }
