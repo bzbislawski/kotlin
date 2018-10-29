@@ -16,7 +16,7 @@ class PdfGeneratorUtil {
     @Autowired
     lateinit var templateEngine: TemplateEngine
 
-    fun createPdf(templateName: String, map: Map<String, String?>) {
+    fun createPdf(templateName: String, map: Map<String, *>) {
         val ctx = Context()
         map.forEach { ctx.setVariable(it.key, it.value) }
 

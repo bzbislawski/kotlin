@@ -6,9 +6,9 @@ import javax.persistence.*
 @Table(name = "users")
 data class User(
         @Id @GeneratedValue(strategy=GenerationType.IDENTITY) val id: Int,
-        val username: String,
-        val password: String,
-        val firstName: String,
-        val lastName: String,
-        val age: Int
+        val username: String? = null,
+        val password: String? = null,
+        val firstName: String? = null,
+        val lastName: String? = null,
+        val age: Int? = null
 )

@@ -28,9 +28,30 @@ class UserController {
         return userService.add(user)
     }
 
-    @GetMapping(value = ["/file"])
-    fun generateFile(@RequestParam(value = "name", defaultValue = "Mr. Noname") name: String) {
-        val data = mapOf("name" to name)
+    @GetMapping(value = ["/get-file"])
+    fun generateFile(
+            @RequestParam(value = "username") username: String?,
+            @RequestParam(value = "firstName") firstName: String?,
+            @RequestParam(value = "lastName") lastName: String?,
+            @RequestParam(value = "age") age: Int?
+    ) {
+        val data = mapOf(
+                "username" to username,
+                "firstName" to firstName,
+                "lastName" to lastName,
+                "age" to age
+        )
+        pdfGeneratorUtil.createPdf("template", data)
+    }
+
+    @PostMapping(value = ["/post-file"])
+    fun generateFile2(@RequestBody user: User) {
+        val data = mapOf(
+                "username" to user.username,
+                "firstName" to user.firstName,
+                "lastName" to user.lastName,
+                "age" to user.age
+        )
         pdfGeneratorUtil.createPdf("template", data)
     }
 }
